@@ -679,10 +679,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jumpPower: 80
   cameraContainer: {fileID: 1631098322}
   minXLook: -85
   maxXLook: 85
-  lookSensitivity: 1
+  lookSensitivity: 0.1
 --- !u!114 &1773216187
 MonoBehaviour:
   m_ObjectHideFlags: 0
