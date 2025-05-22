@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpPower;
     private Vector2 curMovementInput;
+    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -39,6 +40,21 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         CameraLook();
+    }
+
+    private void Update()
+    {
+       Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down)
+        };
+        for (int i = 0; i < rays.Length; i++)
+        {
+            Debug.DrawRay(rays[i].origin, rays[i].direction, Color.yellow);
+        }
     }
 
     void Move()
@@ -78,9 +94,33 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && IsGrounded())
         {
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
+
+    bool IsGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            Debug.DrawRay(rays[i].origin, rays[i].direction * 10, Color.red);
+            if (Physics.Raycast(rays[i], 1.3f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
 }
