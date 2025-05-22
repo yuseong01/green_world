@@ -42,20 +42,20 @@ public class PlayerController : MonoBehaviour
         CameraLook();
     }
 
-    private void Update()
-    {
-       Ray[] rays = new Ray[4]
-        {
-            new Ray(transform.position + (transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down),
-            new Ray(transform.position + (-transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down)
-        };
-        for (int i = 0; i < rays.Length; i++)
-        {
-            Debug.DrawRay(rays[i].origin, rays[i].direction, Color.yellow);
-        }
-    }
+    // private void Update()
+    // {
+    //    Ray[] rays = new Ray[4]
+    //     {
+    //         new Ray(transform.position + (transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
+    //         new Ray(transform.position + (-transform.forward * 0.7f) + (transform.up * 0.01f), Vector3.down),
+    //         new Ray(transform.position + (transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down),
+    //         new Ray(transform.position + (-transform.right * 0.7f) + (transform.up * 0.01f), Vector3.down)
+    //     };
+    //     for (int i = 0; i < rays.Length; i++)
+    //     {
+    //         Debug.DrawRay(rays[i].origin, rays[i].direction, Color.yellow);
+    //     }
+    // }
 
     void Move()
     {
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < rays.Length; i++)
         {
             Debug.DrawRay(rays[i].origin, rays[i].direction * 10, Color.red);
-            if (Physics.Raycast(rays[i], 1.3f, groundLayerMask))
+            if (Physics.Raycast(rays[i], 1.5f, groundLayerMask))
             {
                 return true;
             }
