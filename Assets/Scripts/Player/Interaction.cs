@@ -22,15 +22,17 @@ public class Interaction : MonoBehaviour
         camera = Camera.main;
     }
 
+
     void Update()
     {
+        Debug.DrawRay(camera.transform.position, camera.transform.forward * maxCheckDistance, Color.red);
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
             Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-            RaycastHit hit;
+            //RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
+            if (Physics.Raycast(ray, out var hit, maxCheckDistance, layerMask))
             {
                 if (hit.collider.gameObject != curInteractGameObject)
                 {
@@ -46,7 +48,10 @@ public class Interaction : MonoBehaviour
                 promptText.gameObject.SetActive(false);
             }
         }
+
+
     }
+
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3811361824850786392}
   - component: {fileID: 3725941521406852737}
   - component: {fileID: 3768203320056337373}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1324855346486934197}
   - component: {fileID: 5341841436634180522}
   - component: {fileID: 8740287775018226722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Item_Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
