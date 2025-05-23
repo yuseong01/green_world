@@ -17,7 +17,7 @@ public class ItemObject : MonoBehaviour,IInteractable
         return str;
     }
 
-    public void OnInteract()
+    public void OnInteract()  
     {
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();

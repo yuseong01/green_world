@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
+        //플레이어에서 레이저를 쏴서 그라운드인지 확인
         Ray[] rays = new Ray[4]
         {
             new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < rays.Length; i++)
         {
+            //플레이어 중간부터 레이저를 쏘기때문에 1.3정도의 길이로 쏘아줌
             if (Physics.Raycast(rays[i], 1.3f, groundLayerMask))
             {
                 return true;

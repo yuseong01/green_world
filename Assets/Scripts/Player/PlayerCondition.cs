@@ -10,6 +10,7 @@ public interface IDamageable
 
 public class PlayerCondition : MonoBehaviour , IDamageable
 {
+    //캐릭터 상태관리
     public UICondition uiCondition;
 
     Condition health { get { return uiCondition.health; } }
